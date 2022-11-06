@@ -1,6 +1,7 @@
 package com.ajie.usercenter.service;
 
 import com.ajie.usercenter.model.domain.User;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,5 +38,15 @@ class UserServiceTest {
         boolean result = userService.save(user);
         System.out.println(user.getId());
         Assertions.assertTrue(result);
+    }
+
+    @Test
+    void testUserRegister() {
+        String username = "ajie00";
+        String userPassword = "";
+        String checkPassword = "123456";
+        long result = userService.userRegister(username, userPassword, checkPassword);
+        Assert.assertEquals(-1, result);
+
     }
 }
