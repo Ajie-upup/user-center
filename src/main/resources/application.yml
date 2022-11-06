@@ -8,5 +8,9 @@ spring:
     url: jdbc:mysql://localhost:3306/user_center
     username: root
     password: root
-
+# mybatis-plus???
+mybatis-plus:
+  configuration:
+# ?? mybatis-plus ??? ? Unknown column 'user_account' in 'fieldlist'?
+    map-underscore-to-camel-case: false
 
