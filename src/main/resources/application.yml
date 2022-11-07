@@ -8,9 +8,17 @@ spring:
     url: jdbc:mysql://localhost:3306/user_center
     username: root
     password: root
-# mybatis-plus???
+#    设置session过期时间
+  session:
+    timeout: 86400
+# mybatis-plus 字段转换
 mybatis-plus:
   configuration:
-# ?? mybatis-plus ??? ? Unknown column 'user_account' in 'fieldlist'?
+# 解决 mybatis-plus 框架中 “ Unknown column 'user_account' in 'fieldlist'”
     map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 
