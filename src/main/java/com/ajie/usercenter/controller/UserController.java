@@ -70,6 +70,23 @@ public class UserController {
     }
 
     /**
+     * 获取当前用户
+     *
+     * @param request
+     * @return 返回从数据库中查询到的数据
+     */
+    @GetMapping("/current")
+    public User getCurrentUser(HttpServletRequest request) {
+        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
+        User user = (User) userObj;
+        if (user == null) {
+            return null;
+        }
+        User currentUser = userService.getById(user.getId());
+        return userService.getSafetyUser(currentUser);
+    }
+
+    /**
      * 查询用户
      *
      * @param username 用户名（可以为空）
